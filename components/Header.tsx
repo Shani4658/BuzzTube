@@ -1,19 +1,27 @@
+"use client"
 import React from 'react'
+import { RootState } from '../src/app/store/store';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaUser } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
-
 import LOGO from "../public/Assets/logo.png"
 import Image from 'next/image';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggle } from '../src/app/store/userSlice';
+
+
+
 
 
 const Header = () => {
-  return (
+  const dispatch = useDispatch();
+  const isToggle = useSelector((state: RootState) => state.user.isToggle);
+    return (
     <div className='m-2 p-2'>
       <div className='grid grid-flow-col items-center text-gray-200'>
       {/* Section 1. Hamburger + Logo */}
       <div className='flex col-span-1 justify-start'>
-           <GiHamburgerMenu className='text-gray-600 w-6 h-auto'/>
+           <GiHamburgerMenu className='text-gray-600 w-6 h-auto' onClick={()=>dispatch(toggle())}/>
            <Image src={LOGO} alt="logo" className='pb-2 object-cover object-center w-44 h-10' />
 
       </div>

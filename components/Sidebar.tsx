@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import '../src/app/globals.css'
 import NavItem from '../UIComponents/NavItem'
@@ -9,6 +10,8 @@ import { MdOutlineLocalMovies, MdOutlineSportsSoccer, MdSportsEsports, MdWatchLa
 import { PiFilmSlateFill } from 'react-icons/pi'
 import { FaHistory } from 'react-icons/fa'
 import { ImYoutube } from 'react-icons/im'
+import { useSelector } from 'react-redux'
+import type { RootState } from '../src/app/store/store'; 
 
 const Sidebar = () => {
   const menuItems = [
@@ -32,8 +35,11 @@ const Sidebar = () => {
     { label: "History", icon: <FaHistory size={25} /> },
     { label: "Your Videos", icon: <ImYoutube  size={25} /> },
   ]
+  const isSidebarOpen = useSelector((store: RootState) => store.user.isToggle);
+
   return (
-    <div className='col-span-1 shadow-lg shadow-slate-600 p-5 text-lg m-2 text-start rounded-lg'>
+
+    <div className={`transition-all duration-300 ${isSidebarOpen?'hidden':'block'} col-span-1 shadow-lg shadow-slate-600 p-5 text-lg m-2 text-start rounded-lg`}>
       <ul className=''>
         {
           menuItems.map((item,index)=>(
