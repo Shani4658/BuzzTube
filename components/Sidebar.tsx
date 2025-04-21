@@ -35,11 +35,16 @@ const Sidebar = () => {
     { label: "History", icon: <FaHistory size={25} /> },
     { label: "Your Videos", icon: <ImYoutube  size={25} /> },
   ]
-  const isSidebarOpen = useSelector((store: RootState) => store.user.isToggle);
+  const isSidebarOpen = useSelector((store: RootState) => store.app.isMenuOpen);
 
+  // if(!isSidebarOpen) return null; // Return null if the sidebar is closed
   return (
 
-    <div className={`transition-all duration-300 ${isSidebarOpen?'hidden':'block'} col-span-1 shadow-lg shadow-slate-600 p-5 text-lg m-2 text-start rounded-lg`}>
+    <div
+    className={`transition-all duration-300 ease-in-out
+    ${isSidebarOpen ? 'translate-x-0 pointer-events-auto' : '-translate-x-80 pointer-events-none'}
+    col-span-1 shadow-lg shadow-slate-600 p-5 text-lg m-2 text-start rounded-lg`}
+    >
       <ul className=''>
         {
           menuItems.map((item,index)=>(

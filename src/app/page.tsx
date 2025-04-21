@@ -5,7 +5,7 @@ import Body from '../../components/Body'
 
 const home = () => {
   return (
-    <div className='border m-2 p-2'>
+    <div className='border m-2 p-2 absolute w-screen h-screen overflow-y-auto overflow-x-hidden scrollbar-hide'>
       <Header />
       <Body />
 

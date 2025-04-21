@@ -7,7 +7,7 @@ import { IoSearch } from "react-icons/io5";
 import LOGO from "../public/Assets/logo.png"
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggle } from '../src/app/store/userSlice';
+import { toggle } from '../src/app/store/appSlice';
 
 
 
@@ -15,13 +15,13 @@ import { toggle } from '../src/app/store/userSlice';
 
 const Header = () => {
   const dispatch = useDispatch();
-  const isToggle = useSelector((state: RootState) => state.user.isToggle);
+  const isToggle = useSelector((state: RootState) => state.app.isMenuOpen);
     return (
     <div className='m-2 p-2'>
       <div className='grid grid-flow-col items-center text-gray-200'>
       {/* Section 1. Hamburger + Logo */}
       <div className='flex col-span-1 justify-start'>
-           <GiHamburgerMenu className='text-gray-600 w-6 h-auto' onClick={()=>dispatch(toggle())}/>
+           <GiHamburgerMenu className='text-gray-600 w-6 h-auto hover:cursor-pointer' onClick={()=>dispatch(toggle())}/>
            <Image src={LOGO} alt="logo" className='pb-2 object-cover object-center w-44 h-10' />
 
       </div>

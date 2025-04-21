@@ -32,3 +32,7 @@ body {
 .nav-items:hover {
   @apply bg-slate-900 text-white;
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari, Opera */
+}
