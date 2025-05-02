@@ -17,7 +17,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const isToggle = useSelector((state: RootState) => state.app.isMenuOpen);
     return (
-    <div className='m-2 p-2'>
+    <div className='bg-black mx-2 p-2 fixed top-0 left-0 right-0 '>
       <div className='grid grid-flow-col items-center text-gray-200'>
       {/* Section 1. Hamburger + Logo */}
       <div className='flex col-span-1 justify-start'>

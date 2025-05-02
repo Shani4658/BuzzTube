@@ -41,7 +41,7 @@ const Sidebar = () => {
   return (
 
     <div
-    className={`transition-all duration-300 ease-in-out
+    className={`mt-16 bg-black col-span-1 fixed transition-all duration-300 ease-in-out
     ${isSidebarOpen ? 'translate-x-0 pointer-events-auto' : '-translate-x-80 pointer-events-none'}
     col-span-1 shadow-lg shadow-slate-600 p-5 text-lg m-2 text-start rounded-lg`}
     >
