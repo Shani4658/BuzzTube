@@ -1,3 +1,6 @@
+"use client"
+import { useRouter } from "next/navigation";
+import React from "react";
 interface VideoCardProps {
     info: {
         id:string;
@@ -21,9 +24,17 @@ interface VideoCardProps {
     };
 }
 const VideoCard: React.FC<VideoCardProps> = ({info}) => {
-    console.log(info);
+    const router = useRouter();
+
+    const handleClick = () => {
+        router.push(`/Watchpage/${info.id}`);
+    };
+    // console.log(info);
     return(
-        <div className="col-span-1 p-2 m-2 sm:w-72 shadow-lg rounded-lg border border-gray-800">
+        <div 
+            onClick={handleClick}
+            key={info.id}
+            className="col-span-1 p-2 m-2 sm:w-72 shadow-lg rounded-lg border border-gray-800 hover:cursor-pointer hover:bg-gray-900">
             <img className="object-cover" src={info.snippet.thumbnails.high.url} alt="loading" />
             <h3 className="font-bold">{info.snippet.title}</h3>
             <p>{info.snippet.channelTitle}</p>

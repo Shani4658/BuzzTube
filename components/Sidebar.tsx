@@ -12,14 +12,15 @@ import { FaHistory } from 'react-icons/fa'
 import { ImYoutube } from 'react-icons/im'
 import { useSelector } from 'react-redux'
 import type { RootState } from '../src/app/store/store'; 
+import { useRouter } from 'next/navigation'
 
 const Sidebar = () => {
   const menuItems = [
-    { label: "Home", icon: <IoMdHome size={25} /> },
-    { label: "Shorts", icon: <SiYoutubeshorts size={25} /> },
-    { label: "Videos", icon: <BiSolidVideos size={25} /> },
-    { label: "Movies", icon: <MdOutlineLocalMovies size={25} /> },
-    { label: "Music", icon: <IoMdMusicalNote size={25} /> },
+    { label: "Home", icon: <IoMdHome size={25} />, path: "/"  },
+    { label: "Shorts", icon: <SiYoutubeshorts size={25} /> , path:"/Shorts" },
+    { label: "Videos", icon: <BiSolidVideos size={25} />,path:"/Videos"  },
+    { label: "Movies", icon: <MdOutlineLocalMovies size={25} />, path:"/Movies"  },
+    { label: "Music", icon: <IoMdMusicalNote size={25} /> , path:"/Music" },
   ];
   
   const subscription = [
@@ -36,19 +37,27 @@ const Sidebar = () => {
     { label: "Your Videos", icon: <ImYoutube  size={25} /> },
   ]
   const isSidebarOpen = useSelector((store: RootState) => store.app.isMenuOpen);
+  const router = useRouter();
 
   // if(!isSidebarOpen) return null; // Return null if the sidebar is closed
   return (
 
     <div
-    className={`mt-16 bg-black col-span-1 fixed transition-all duration-300 ease-in-out
+    className={`mt-16 bg-black col-span-1 absolute transition-all duration-300 ease-in-out z-40
     ${isSidebarOpen ? 'translate-x-0 pointer-events-auto' : '-translate-x-80 pointer-events-none'}
     col-span-1 shadow-lg shadow-slate-600 p-5 text-lg m-2 text-start rounded-lg`}
     >
       <ul className=''>
         {
           menuItems.map((item,index)=>(
-            <NavItem key={index} icon={item.icon}>{item.label}</NavItem>
+            <NavItem 
+            key={index} 
+            icon={item.icon}
+            onClick={()=> {
+              console.log(item.path);
+              router.push(item.path)}
+            }
+            >{item.label}</NavItem>
           ))
         }
 
