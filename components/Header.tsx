@@ -11,6 +11,7 @@ import { toggle } from '../src/app/store/appSlice';
 import { useRouter } from 'next/navigation';
 import { SEARCH_SUGGESTION_URL } from '../Utils/Constants';
 import ButtonList from './ButtonList';
+import { cacheResults } from '@/app/store/searchSlice';
 
 type SuggestionItem = {
   id: {
@@ -32,9 +33,20 @@ const Header = () => {
   const isToggle = useSelector((state: RootState) => state.app.isMenuOpen);
   const router = useRouter();
 
+  const searchCache = useSelector((state:RootState) => state.search);
+  const dispatchCache = useDispatch();
+
   useEffect(() => {
     
-    const timer = setTimeout(()=>handleSuggestions(),200);
+    const timer = setTimeout(()=>{
+      if(searchCache[searchQuery]){
+        // console.log("cache",cache);
+        setSuggestions(searchCache[searchQuery]);
+      }
+      else{
+        handleSuggestions();
+      }
+    },200);
     return () =>{
       clearTimeout(timer);
     }
@@ -47,6 +59,10 @@ const Header = () => {
     const data = await response.json();
     // console.log(data.items);
     setSuggestions(data.items);
+
+    dispatchCache(cacheResults({
+      [searchQuery]: data.items,
+    }))
   }
 
   // console.log(SEARCH_SUGGESTION_URL);
