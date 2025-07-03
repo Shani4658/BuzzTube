@@ -15,7 +15,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const home = () => {
   return (
-    <div className='border m-2 p-2 absolute w-screen h-screen overflow-y-auto overflow-x-hidden scrollbar-hide'>
+    <div className='border m-2 p-2 w-screen h-screen overflow-y-auto overflow-x-hidden scrollbar-hide'>
       <Header />
       {/* <RouterProvider router={appRouter} /> */}
       <Body />

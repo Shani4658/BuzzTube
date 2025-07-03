@@ -13,6 +13,7 @@ const Videocontainer = () => {
   const getVideos = async () => {
     const data = await fetch(API_URL);
     const json = await data.json();
+    console.log(json.items);
     setVideos(json.items);
   }
   // console.log(videos);

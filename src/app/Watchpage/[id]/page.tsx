@@ -19,9 +19,9 @@ const page = () => {
     <div>
       <Header />
       <Sidebar />
-      <div className='flex flex-col items-center justify-center h-screen'>
-        <h1 className='text-2xl font-bold'>Watch Page</h1>
-        <iframe width="560" height="315" src={`https://www.youtube.com/embed/${videoId}?si=6WKSPFhLmaSjpXZK`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+      <div className='flex flex-col items-start m-20 mt-16 h-screen'>
+        {/* <h1 className='text-2xl font-bold'>Watch Page</h1> */}
+        <iframe width="1000" height="500" src={`https://www.youtube.com/embed/${videoId}?si=6WKSPFhLmaSjpXZK`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
       </div>
     </div>
   )

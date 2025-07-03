@@ -11,7 +11,7 @@ const ButtonList = () => {
   const scrollRight = () => scrollRef.current?.scrollBy({left: 200, behavior: 'smooth'});
   const scrollLeft = () => scrollRef.current?.scrollBy({left: -200, behavior: 'smooth'});
   return (
-    <div className='fixed w-full flex mt-10 justify-center '>
+    <div className='fixed w-full flex justify-center z-30'>
       <button onClick = {scrollLeft}><FaAngleLeft /></button>
       <div ref={scrollRef} className='relative flex overflow-x-scroll scroll-smooth scrollbar-hide gap-2 w-9/12'>
       {
