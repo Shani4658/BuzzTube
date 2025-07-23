@@ -30,27 +30,26 @@ const Header = () => {
 
   console.log(searchQuery);
   const dispatch = useDispatch();
-  const isToggle = useSelector((state: RootState) => state.app.isMenuOpen);
+  // const isToggle = useSelector((state: RootState) => state.app.isMenuOpen);
   const router = useRouter();
 
-  const searchCache = useSelector((state:RootState) => state.search);
+  // const searchCache = useSelector((state:RootState) => state.search);
+const searchCache = useSelector(
+  (state: RootState) => state.search.cache as { [key: string]: SuggestionItem[] });
   const dispatchCache = useDispatch();
 
   useEffect(() => {
-    
-    const timer = setTimeout(()=>{
-      if(searchCache[searchQuery]){
-        // console.log("cache",cache);
+    const timer = setTimeout(() => {
+      if (searchCache[searchQuery]) {
         setSuggestions(searchCache[searchQuery]);
-      }
-      else{
+      } else {
         handleSuggestions();
       }
-    },200);
-    return () =>{
+    }, 200);
+    return () => {
       clearTimeout(timer);
-    }
-  },[searchQuery]);
+    };
+  }, [searchQuery, searchCache]);
 
 
   const handleSuggestions = async () => {

@@ -2,8 +2,8 @@
 import React from 'react'
 import Header from '../../components/Header'
 import Body from '../../components/Body'
-import { create } from 'domain'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+// import { create } from 'domain'
+// import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 // const appRouter = createBrowserRouter([
 //   {

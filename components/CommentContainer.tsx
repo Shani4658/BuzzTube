@@ -42,7 +42,7 @@ interface CommentType {
   replies: CommentType[];
 }
 
-const Comment = ({name, text, replies}: CommentType)=>{
+const Comment = ({name, text}: CommentType)=>{
     return(
         <div className='flex  bg-gray-700 p-2 my-2 rounded-lg'>
             <CgProfile />
